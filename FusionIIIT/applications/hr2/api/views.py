@@ -247,7 +247,7 @@ class LTC(Hr2APIView):
         if serializer.is_valid():
             instance = serializer.save()
             create_form_file(
-                uploader=user_info["uploader_name"],
+                uploader=request.user.username,
                 uploader_designation=user_info["uploader_designation"],
                 receiver=user_info["receiver_name"],
                 receiver_designation=user_info["receiver_designation"],
@@ -314,7 +314,7 @@ class CPDAAdvance(Hr2APIView):
         if serializer.is_valid():
             instance = serializer.save()
             create_form_file(
-                uploader=user_info["uploader_name"],
+                uploader=request.user.username,
                 uploader_designation=user_info["uploader_designation"],
                 receiver=user_info["receiver_name"],
                 receiver_designation=user_info["receiver_designation"],
@@ -381,7 +381,7 @@ class CPDAReimbursement(Hr2APIView):
         if serializer.is_valid():
             instance = serializer.save()
             create_form_file(
-                uploader=user_info["uploader_name"],
+                uploader=request.user.username,
                 uploader_designation=user_info["uploader_designation"],
                 receiver=user_info["receiver_name"],
                 receiver_designation=user_info["receiver_designation"],
@@ -448,7 +448,7 @@ class Leave(Hr2APIView):
         if serializer.is_valid():
             instance = serializer.save()
             create_form_file(
-                uploader=user_info["uploader_name"],
+                uploader=request.user.username,
                 uploader_designation=user_info["uploader_designation"],
                 receiver=user_info["receiver_name"],
                 receiver_designation=user_info["receiver_designation"],
@@ -527,7 +527,7 @@ class Appraisal(Hr2APIView):
         if serializer.is_valid():
             instance = serializer.save()
             create_form_file(
-                uploader=user_info["uploader_name"],
+                uploader=request.user.username,
                 uploader_designation=user_info["uploader_designation"],
                 receiver=user_info["receiver_name"],
                 receiver_designation=user_info["receiver_designation"],

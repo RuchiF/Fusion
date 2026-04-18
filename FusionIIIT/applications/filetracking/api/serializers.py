@@ -19,6 +19,9 @@ class FileHeaderSerializer(serializers.ModelSerializer):
     '''
     This serializes everything except the attachments of a file and whether it is read or not
     '''
+    uploader_name = serializers.CharField(source='uploader.user.username', read_only=True)
+    designation_name = serializers.CharField(source='designation.name', read_only=True)
+
     class Meta:
         model = File
         exclude = ['upload_file', 'is_read']
