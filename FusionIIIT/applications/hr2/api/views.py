@@ -287,13 +287,27 @@ class LTC(Hr2APIView):
         )
         if serializer.is_valid():
             serializer.save()
-            forward_form_file(
-                file_id=receiver["file_id"],
-                receiver=receiver["receiver"],
-                receiver_designation=receiver["receiver_designation"],
-                remarks=receiver["remarks"],
-                file_extra_JSON=receiver["file_extra_JSON"],
-            )
+            
+            # Handle workflow routing based on approval status
+            is_approved = form_payload.get("approved")
+            has_next_receiver = receiver.get("receiver") and receiver.get("receiver").strip()
+            
+            if is_approved is False:
+                # Rejection: Archive the file without forwarding
+                archive_form_file(file_id=receiver["file_id"])
+            elif is_approved is True and has_next_receiver:
+                # Approval with next receiver: Forward to next approver
+                forward_form_file(
+                    file_id=receiver["file_id"],
+                    receiver=receiver["receiver"],
+                    receiver_designation=receiver["receiver_designation"],
+                    remarks=receiver["remarks"],
+                    file_extra_JSON=receiver["file_extra_JSON"],
+                )
+            elif is_approved is True and not has_next_receiver:
+                # Final approval: Archive the file
+                archive_form_file(file_id=receiver["file_id"])
+            
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
