@@ -1,0 +1,7 @@
+Test ID,WF ID,Category,Scenario,Expected Final State,Tester
+WF-1-E2E-01,WF-1,End-to-End,Employee submits LTC → workflow_status becomes submitted,,Tester1
+WF-1-NEG-01,WF-1,Negative,HR Admin rejects LTC; status → hr_rejected,,Tester1
+WF-2-E2E-01,WF-2,End-to-End,Full CPDA: submit → HOD verify → Director approve → Accountant complete,,Tester1
+WF-2-NEG-01,WF-2,Negative,HOD rejects CPDA; status → hod_not_verified,,Tester1
+WF-3-E2E-01,WF-3,End-to-End,Appraisal submitted → HR Admin approves → hr_approved,,Tester1
+WF-3-NEG-01,WF-3,Negative,HR Admin rejects appraisal; status → hr_rejected,,Tester1

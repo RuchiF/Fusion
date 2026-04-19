@@ -1,0 +1,141 @@
+business_rules:
+
+  # ── LTC ─────────────────────────────────────────────────────────────────────
+
+  - id: "BR-1"
+    title: "LTC requires complete employee profile"
+    description: "An employee must have EmpConfidentialDetails (Aadhaar + bank account) before submitting LTC"
+
+    valid_tests:
+      - input_action: "Submit LTC as employee with Aadhaar=123456789012 and bank_account_no=999"
+        expected_result: "LTC form created (HTTP 200)"
+
+    invalid_tests:
+      - input_action: "Submit LTC as employee with aadhar_no=0 and bank_account_no=0"
+        expected_result: "HTTP 400 with incomplete profile message"
+
+  - id: "BR-2"
+    title: "LTC requires explicit approver (receiver) information"
+    description: "Submitting LTC without receiver_name or receiver_designation must fail"
+
+    valid_tests:
+      - input_action: "Submit LTC with receiver_name='hr_admin' and receiver_designation='HR Admin'"
+        expected_result: "LTC created, HTTP 200"
+
+    invalid_tests:
+      - input_action: "Submit LTC with empty receiver_name and receiver_designation"
+        expected_result: "HTTP 400 with detail about missing approver"
+
+  - id: "BR-3"
+    title: "Only HR Admin can approve or reject LTC"
+    description: "LTCWorkflowHandle hr_admin_approve/reject actions require the designation 'HR Admin'"
+
+    valid_tests:
+      - input_action: "POST /hr/ltc/handle/<file_id>/ with action=hr_admin_approve as HR Admin"
+        expected_result: "LTC approved, workflow_status updates to hr_approved, HTTP 200"
+
+    invalid_tests:
+      - input_action: "POST /hr/ltc/handle/<file_id>/ with action=hr_admin_approve as regular employee"
+        expected_result: "HTTP 403 (not HR Admin designation)"
+
+  - id: "BR-4"
+    title: "LTC rejection requires remarks"
+    description: "HR Admin must provide rejection remarks when rejecting an LTC application"
+
+    valid_tests:
+      - input_action: "Reject LTC with remarks='Incomplete documentation'"
+        expected_result: "LTC rejected, HTTP 200"
+
+    invalid_tests:
+      - input_action: "Reject LTC with empty remarks"
+        expected_result: "HTTP 400 with 'Remarks are required when rejecting'"
+
+  # ── CPDA Advance ─────────────────────────────────────────────────────────────
+
+  - id: "BR-5"
+    title: "CPDA Advance submission requires a configured HOD for the applicant's department"
+    description: "The CPDAAdvance POST endpoint resolves the HOD automatically; if none exists it must reject"
+
+    valid_tests:
+      - input_action: "Faculty in CSE dept (HOD exists) submits CPDA Advance"
+        expected_result: "CPDA form created, routed to HOD, HTTP 200"
+
+    invalid_tests:
+      - input_action: "Faculty with no department (or no HOD for that dept) submits CPDA Advance"
+        expected_result: "HTTP 400 with HOD not configured message"
+
+  - id: "BR-6"
+    title: "Non-HR-Admin cannot list another user's CPDA forms"
+    description: "The GET /cpdaadv/ endpoint restricts cross-user listing to HR Admin only"
+
+    valid_tests:
+      - input_action: "HR Admin GETs /cpdaadv/?name=emp_test"
+        expected_result: "HTTP 200 with emp_test CPDA forms"
+
+    invalid_tests:
+      - input_action: "Regular employee GETs /cpdaadv/?name=another_user"
+        expected_result: "HTTP 403 with 'may only list CPDA Advance forms for your own account'"
+
+  - id: "BR-7"
+    title: "CPDA Director rejection requires remarks"
+    description: "director_reject action in CPDAAdvanceWorkflowHandle requires non-empty remarks"
+
+    valid_tests:
+      - input_action: "Director rejects CPDA with remarks='Budget unavailable'"
+        expected_result: "workflow_status=director_rejected, HTTP 200"
+
+    invalid_tests:
+      - input_action: "Director rejects CPDA with empty remarks"
+        expected_result: "HTTP 400 with 'Remarks are required when rejecting'"
+
+  # ── Appraisal ─────────────────────────────────────────────────────────────────
+
+  - id: "BR-8"
+    title: "Appraisal requires receiver (HR Admin) details"
+    description: "AppraisalSubmit/Appraisal POST must fail if receiver_name or receiver_designation is missing"
+
+    valid_tests:
+      - input_action: "Submit appraisal with receiver_name='hr_admin', receiver_designation='HR Admin'"
+        expected_result: "Appraisalform created, HTTP 200"
+
+    invalid_tests:
+      - input_action: "Submit appraisal with missing receiver info"
+        expected_result: "HTTP 400 with approver required message"
+
+  - id: "BR-9"
+    title: "Appraisal rejection requires remarks"
+    description: "HR Admin must supply remarks when rejecting an appraisal via AppraisalWorkflowHandle"
+
+    valid_tests:
+      - input_action: "hr_admin_reject appraisal with remarks='Missing publications'"
+        expected_result: "workflow_status=hr_rejected, HTTP 200"
+
+    invalid_tests:
+      - input_action: "hr_admin_reject appraisal with no remarks"
+        expected_result: "HTTP 400 with remarks required message"
+
+  # ── Leave ─────────────────────────────────────────────────────────────────────
+
+  - id: "BR-10"
+    title: "Unauthenticated users cannot access any HR2 endpoint"
+    description: "All HR2 API views require IsAuthenticated; unauthenticated calls must be rejected"
+
+    valid_tests:
+      - input_action: "Authenticated GET /hr/leaveBalance/"
+        expected_result: "HTTP 200 with leave balance data"
+
+    invalid_tests:
+      - input_action: "Unauthenticated GET /hr/leaveBalance/"
+        expected_result: "HTTP 401 or 403"
+
+  - id: "BR-11"
+    title: "Date range filter: from_date must not be after to_date"
+    description: "get_forms_for_user returns empty list when from_date > to_date"
+
+    valid_tests:
+      - input_action: "GET /hr/ltc/?name=emp_test&from_date=2026-01-01&to_date=2026-12-31"
+        expected_result: "HTTP 200 (list may be empty but valid)"
+
+    invalid_tests:
+      - input_action: "GET /hr/ltc/?name=emp_test&from_date=2026-12-31&to_date=2026-01-01"
+        expected_result: "HTTP 200 with empty list (invalid range silently returns empty)"

@@ -1,0 +1,20 @@
+Artifact ID,Type,Status
+UC-1,Use Case,Partially Implemented
+UC-2,Use Case,Incorrectly Implemented
+UC-3,Use Case,Incorrectly Implemented
+UC-4,Use Case,Incorrectly Implemented
+UC-5,Use Case,Incorrectly Implemented
+BR-1,Business Rule,Partially Enforced
+BR-2,Business Rule,Partially Enforced
+BR-3,Business Rule,Incorrectly Enforced
+BR-4,Business Rule,Incorrectly Enforced
+BR-5,Business Rule,Partially Enforced
+BR-6,Business Rule,Partially Enforced
+BR-7,Business Rule,Enforced Correctly
+BR-8,Business Rule,Partially Enforced
+BR-9,Business Rule,Incorrectly Enforced
+BR-10,Business Rule,Partially Enforced
+BR-11,Business Rule,Partially Enforced
+WF-1,Workflow,Partial
+WF-2,Workflow,Complete
+WF-3,Workflow,Complete

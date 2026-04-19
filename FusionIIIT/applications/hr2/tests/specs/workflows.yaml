@@ -1,0 +1,76 @@
+workflows:
+
+  # ── LTC Workflow ─────────────────────────────────────────────────────────────
+
+  - id: "WF-1"
+    title: "LTC Submission → HR Admin Approve → Accountant"
+    description: >
+      Employee submits LTC → file lands in HR Admin inbox →
+      HR Admin approves → file forwarded to Accountant →
+      workflow_status becomes with_accountant.
+
+    e2e_tests:
+      - scenario: "Employee submits LTC; HR Admin approves; file routed to Accountant"
+        steps:
+          - "1. Employee POSTs LTC form; workflow_status=submitted"
+          - "2. HR Admin POSTs /ltc/handle/<file_id>/ action=hr_admin_approve"
+          - "3. Verify DB: workflow_status=with_accountant"
+        expected_final_state: "LTCform.workflow_status == 'with_accountant', approved=True"
+
+    negative_tests:
+      - scenario: "HR Admin rejects LTC; workflow terminates at hr_rejected"
+        steps:
+          - "1. Employee submits LTC"
+          - "2. HR Admin POSTs /ltc/handle/<file_id>/ action=hr_admin_reject with remarks"
+          - "3. Verify DB: workflow_status=hr_rejected, approved=False"
+        expected_final_state: "LTCform.workflow_status == 'hr_rejected'"
+
+  # ── CPDA Advance Workflow ─────────────────────────────────────────────────────
+
+  - id: "WF-2"
+    title: "CPDA Advance: Faculty → HOD Verify → Director Approve → Accountant"
+    description: >
+      Faculty submits CPDA Advance → auto-routed to HOD →
+      HOD verifies and forwards to Director → Director approves →
+      forwarded to Accountant → Accountant marks complete.
+
+    e2e_tests:
+      - scenario: "Full CPDA advance happy path: submit → HOD verify → Director approve → Accountant complete"
+        steps:
+          - "1. Faculty POSTs /cpdaadv/; CPDAAdvanceform created; workflow_status=submitted"
+          - "2. HOD POSTs /cpda_adv/handle/<file_id>/ action=hod_verify; status→forwarded_to_director"
+          - "3. Director POSTs action=director_approve; status→director_approved"
+          - "4. Accountant POSTs action=accountant_complete; status→accountant_processed"
+        expected_final_state: "CPDAAdvanceform.workflow_status == 'accountant_processed'"
+
+    negative_tests:
+      - scenario: "HOD rejects CPDA at verification step; workflow terminates"
+        steps:
+          - "1. Faculty submits CPDA Advance"
+          - "2. HOD POSTs action=hod_not_verify; status→hod_not_verified"
+          - "3. Verify DB: workflow_status=hod_not_verified, approved=False"
+        expected_final_state: "CPDAAdvanceform.workflow_status == 'hod_not_verified'"
+
+  # ── Appraisal Workflow ────────────────────────────────────────────────────────
+
+  - id: "WF-3"
+    title: "Appraisal Submission → HR Admin Review → Approve or Reject"
+    description: >
+      Faculty/Staff submits appraisal form → file routed to HR Admin →
+      HR Admin approves or rejects → final status recorded, file archived.
+
+    e2e_tests:
+      - scenario: "Faculty submits appraisal; HR Admin approves; DB shows hr_approved"
+        steps:
+          - "1. Faculty POSTs /appraisal/; Appraisalform created; workflow_status=submitted"
+          - "2. HR Admin POSTs /appraisal/handle/<file_id>/ action=hr_admin_approve"
+          - "3. Verify DB: workflow_status=hr_approved, approved=True"
+        expected_final_state: "Appraisalform.workflow_status == 'hr_approved'"
+
+    negative_tests:
+      - scenario: "HR Admin rejects appraisal; workflow terminates at hr_rejected"
+        steps:
+          - "1. Faculty submits appraisal"
+          - "2. HR Admin POSTs action=hr_admin_reject with non-empty remarks"
+          - "3. Verify DB: workflow_status=hr_rejected, approved=False"
+        expected_final_state: "Appraisalform.workflow_status == 'hr_rejected'"

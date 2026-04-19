@@ -1,0 +1,16 @@
+Test ID,UC ID,Category,Scenario,Preconditions,Input/Action,Expected Result,Tester
+UC-1-AP-01,UC-1,Alternate Path,Employee submits LTC with dict payload (form_data + user_info keys),EmpConfidentialDetails complete,"POST /hr/ltc/ with {'form_data': {...}, 'user_info': {...}}","LTCform created, HTTP 200",Tester1
+UC-1-EX-01,UC-1,Exception,Employee with aadhar_no=0 and bank_account_no=0 tries LTC,"EmpConfidentialDetails has aadhar_no=0, bank_account_no=0",POST /hr/ltc/ after resetting confidential details to zero,HTTP 400 with incomplete profile message,Tester1
+UC-1-HP-01,UC-1,Happy Path,Employee with complete profile submits LTC with valid approver,EmpConfidentialDetails has Aadhaar and bank_account_no,POST /hr/ltc/ with valid list payload,"LTCform created in DB, HTTP 200",Tester1
+UC-2-AP-01,UC-2,Alternate Path,GET with from_date and to_date spanning today,LTC form created today,GET /hr/ltc/?name=emp_test&from_date=2026-01-01&to_date=2026-12-31,HTTP 200 with filtered results,Tester1
+UC-2-EX-01,UC-2,Exception,"from_date=2026-12-31, to_date=2026-01-01 (reversed)",Employee logged in,GET /hr/ltc/?name=emp_test&from_date=2026-12-31&to_date=2026-01-01,HTTP 200 with empty list,Tester1
+UC-2-HP-01,UC-2,Happy Path,Employee GETs /ltc/?name=emp_test,LTC form exists in DB for emp_test,GET /hr/ltc/?name=emp_test,HTTP 200 with list containing the LTC form,Tester1
+UC-3-AP-01,UC-3,Alternate Path,HR Admin GETs /cpdaadv/?name=emp_test,HR Admin designation exists; CPDAAdvanceform exists for emp_test,GET /hr/cpdaadv/?name=emp_test as hr_admin,HTTP 200 with emp_test CPDA forms,Tester1
+UC-3-EX-01,UC-3,Exception,Employee without a department (no HOD) submits CPDA,emp_extra.department = None,POST /hr/cpdaadv/ as employee with no department,HTTP 400 with HOD not configured message,Tester1
+UC-3-HP-01,UC-3,Happy Path,Faculty in CSE dept with HOD submits CPDA Advance,HOD (CSE) designation assigned to hod_cse; employee dept=CSE,POST /hr/cpdaadv/ with valid form_data,"CPDAAdvanceform created, workflow_status=submitted, HTTP 200",Tester1
+UC-4-AP-01,UC-4,Alternate Path,GET /hr/appraisal/?name=emp_test returns existing appraisals,One Appraisalform exists for emp_test,GET /hr/appraisal/?name=emp_test,HTTP 200 with list of appraisals,Tester1
+UC-4-EX-01,UC-4,Exception,POST /hr/appraisal/ with empty user_info,Employee is logged in,"POST /hr/appraisal/ with [{...form_data}, {}] (empty user_info)",HTTP 400 with approver required message,Tester1
+UC-4-HP-01,UC-4,Happy Path,Faculty submits appraisal with receiver_name=hr_admin,HR Admin user and designation exist; no submission window restriction,POST /hr/appraisal/ with valid list payload,"Appraisalform created, workflow_status=submitted, HTTP 200",Tester1
+UC-5-AP-01,UC-5,Alternate Path,GET /hr/leaveBalance/all/ as HR Admin,HR Admin logged in; at least one LeaveBalance exists,GET /hr/leaveBalance/all/,HTTP 200 with list of leave balance records,Tester1
+UC-5-EX-01,UC-5,Exception,GET /hr/leaveBalance/ without any credentials,No auth token,GET /hr/leaveBalance/ with no authentication,HTTP 401 or 403,Tester1
+UC-5-HP-01,UC-5,Happy Path,GET /hr/leaveBalance/ as authenticated employee,LeaveBalance record exists for employee,GET /hr/leaveBalance/,HTTP 200 with leave balance data,Tester1

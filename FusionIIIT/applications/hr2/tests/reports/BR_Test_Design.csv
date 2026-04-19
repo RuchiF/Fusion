@@ -1,0 +1,23 @@
+Test ID,BR ID,Category,Input/Action,Expected Result,Tester
+BR-1-I-01,BR-1,Invalid,"POST /hr/ltc/ with aadhar_no=0, bank_account_no=0",HTTP 400 with missing-profile message,Tester1
+BR-1-V-01,BR-1,Valid,"POST /hr/ltc/ with aadhar_no=123456789012, bank_account_no=987654321",HTTP 200 — LTC created,Tester1
+BR-2-I-01,BR-2,Invalid,POST /hr/ltc/ with empty receiver_name and receiver_designation,HTTP 400 with approver required message,Tester1
+BR-2-V-01,BR-2,Valid,POST /hr/ltc/ with receiver_name='hr_admin',HTTP 200,Tester1
+BR-3-I-01,BR-3,Invalid,POST /hr/ltc/handle/<file_id>/ action=hr_admin_approve as employee,HTTP 400 (wrong designation) or 403 (not owner),Tester1
+BR-3-V-01,BR-3,Valid,POST /hr/ltc/handle/<file_id>/ action=hr_admin_approve as HR Admin,Approval accepted or appropriate error (no file = 400/403),Tester1
+BR-4-I-01,BR-4,Invalid,LTC PUT with approved=False and empty remarks,Returns HTTP 400 Response with rejection remarks required,Tester1
+BR-4-V-01,BR-4,Valid,LTC PUT with approved=False and remarks='Incomplete docs',No HTTP 400 about missing remarks,Tester1
+BR-5-I-01,BR-5,Invalid,POST /hr/cpdaadv/ with employee having no department,HTTP 400 with HOD not configured message,Tester1
+BR-5-V-01,BR-5,Valid,POST /hr/cpdaadv/ with employee in CSE (HOD configured),"HTTP 200, CPDAAdvanceform created",Tester1
+BR-6-I-01,BR-6,Invalid,GET /hr/cpdaadv/?name=hr_admin as regular employee,HTTP 403,Tester1
+BR-6-V-01,BR-6,Valid,GET /hr/cpdaadv/?name=emp_test as hr_admin,HTTP 200,Tester1
+BR-7-I-01,BR-7,Invalid,director_reject action with empty remarks field,HTTP 400 'Remarks are required when rejecting',Tester1
+BR-7-V-01,BR-7,Valid,CPDAAdvanceWorkflowHandle director_reject with remarks,No error from remarks check,Tester1
+BR-8-I-01,BR-8,Invalid,POST /hr/appraisal/ with empty receiver_name,HTTP 400 with approver required message,Tester1
+BR-8-V-01,BR-8,Valid,POST /hr/appraisal/ with receiver_name='hr_admin',HTTP 200,Tester1
+BR-9-I-01,BR-9,Invalid,hr_admin_reject with remarks='',HTTP 400 response,Tester1
+BR-9-V-01,BR-9,Valid,hr_admin_reject with remarks='Missing publications',No error returned,Tester1
+BR-10-I-01,BR-10,Invalid,GET /hr/leaveBalance/ with no credentials,HTTP 401 or 403,Tester1
+BR-10-V-01,BR-10,Valid,GET /hr/leaveBalance/ as authenticated employee,HTTP 200,Tester1
+BR-11-I-01,BR-11,Invalid,GET /hr/ltc/?from_date=2026-12-31&to_date=2026-01-01,HTTP 200 with empty result,Tester1
+BR-11-V-01,BR-11,Valid,GET /hr/ltc/?name=emp_test&from_date=2026-01-01&to_date=2026-12-31,HTTP 200,Tester1

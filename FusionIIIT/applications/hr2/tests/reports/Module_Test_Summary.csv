@@ -1,0 +1,21 @@
+Metric,Value
+Module,hr2
+Tester,Tester1
+Run Date,2026-04-19
+Total Use Cases,5
+Total Business Rules,11
+Total Workflows,3
+Required UC Tests,15
+Designed UC Tests,15
+Required BR Tests,22
+Designed BR Tests,22
+Required WF Tests,6
+Designed WF Tests,6
+UC Adequacy %,100.0%
+BR Adequacy %,100.0%
+WF Adequacy %,100.0%
+Total Tests Executed,43
+Total Pass,15
+Total Partial,0
+Total Fail,28
+Strict Pass Rate %,34.9%

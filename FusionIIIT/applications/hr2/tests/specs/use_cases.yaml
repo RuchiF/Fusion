@@ -1,0 +1,127 @@
+use_cases:
+
+  # ── LTC ─────────────────────────────────────────────────────────────────────
+
+  - id: "UC-1"
+    title: "Submit LTC Application"
+    description: "Employee submits a Leave Travel Concession (LTC) application with valid profile and approver details"
+    actors: "Employee (Faculty/Staff)"
+    preconditions: "Employee is logged in and has complete EmpConfidentialDetails (Aadhaar + bank account)"
+
+    happy_paths:
+      - scenario: "Employee with complete profile submits LTC with valid approver"
+        preconditions: "Employee profile complete, HR Admin designation exists"
+        input_action: "POST /hr/ltc/ with valid form data and user_info containing receiver_name and receiver_designation"
+        expected_result: "LTC form created in DB with workflow_status=submitted, HTTP 200"
+
+    alternate_paths:
+      - scenario: "Employee submits LTC with dict payload instead of list"
+        preconditions: "Employee profile complete"
+        input_action: "POST /hr/ltc/ with {form_data: {...}, user_info: {...}} dict format"
+        expected_result: "LTC form accepted and created, HTTP 200"
+
+    exception_paths:
+      - scenario: "Employee with incomplete profile (missing Aadhaar/bank) attempts LTC"
+        preconditions: "EmpConfidentialDetails has aadhar_no=0, bank_account_no=0"
+        input_action: "POST /hr/ltc/ with otherwise valid data"
+        expected_result: "HTTP 400 with detail message about missing profile fields"
+
+  - id: "UC-2"
+    title: "Retrieve LTC Application History"
+    description: "Employee or HR Admin retrieves existing LTC applications filtered by date range"
+    actors: "Employee, HR Admin"
+    preconditions: "Employee is logged in; at least one LTC form exists for the user"
+
+    happy_paths:
+      - scenario: "Employee fetches their own LTC forms for current year"
+        preconditions: "LTC form exists in DB for this employee"
+        input_action: "GET /hr/ltc/?name=emp_test"
+        expected_result: "HTTP 200 with list of LTC forms"
+
+    alternate_paths:
+      - scenario: "Employee fetches LTC forms with explicit date range"
+        preconditions: "LTC form exists in DB within given date range"
+        input_action: "GET /hr/ltc/?name=emp_test&from_date=2026-01-01&to_date=2026-12-31"
+        expected_result: "HTTP 200 with filtered list"
+
+    exception_paths:
+      - scenario: "Request with invalid date range (from_date > to_date)"
+        preconditions: "Employee is authenticated"
+        input_action: "GET /hr/ltc/?name=emp_test&from_date=2026-12-31&to_date=2026-01-01"
+        expected_result: "HTTP 200 with empty list (invalid range returns empty)"
+
+  # ── CPDA Advance ─────────────────────────────────────────────────────────────
+
+  - id: "UC-3"
+    title: "Submit CPDA Advance Application"
+    description: "Faculty member submits a Career Professional Development Allowance (CPDA) advance request; auto-routed to department HOD"
+    actors: "Faculty (Employee)"
+    preconditions: "Employee is logged in; HOD designation exists for employee's department; Director and Accountant are configured"
+
+    happy_paths:
+      - scenario: "Faculty with valid department HOD submits CPDA advance"
+        preconditions: "HOD (CSE) designation assigned to hod_cse user; employee is in CSE dept"
+        input_action: "POST /hr/cpdaadv/ with valid form_data and purpose"
+        expected_result: "CPDAAdvanceform created, workflow_status=submitted, file routed to HOD, HTTP 200"
+
+    alternate_paths:
+      - scenario: "HR Admin lists another employee's CPDA advance forms"
+        preconditions: "HR Admin designation exists; CPDAAdvanceform exists for emp_test"
+        input_action: "GET /hr/cpdaadv/?name=emp_test (as hr_admin)"
+        expected_result: "HTTP 200 with list of CPDA forms for emp_test"
+
+    exception_paths:
+      - scenario: "Faculty with no HOD configured tries to submit CPDA advance"
+        preconditions: "Employee's department has no HOD designation holder"
+        input_action: "POST /hr/cpdaadv/ with valid data (employee not in any dept)"
+        expected_result: "HTTP 400 with detail about HOD not configured"
+
+  - id: "UC-4"
+    title: "Submit Appraisal Form"
+    description: "Faculty/staff member submits annual appraisal form to HR Admin within the submission window"
+    actors: "Faculty/Staff"
+    preconditions: "Employee is logged in; HR Admin designation exists; no HR2_APPRAISAL_SUBMISSION_START/END restriction in test settings"
+
+    happy_paths:
+      - scenario: "Faculty submits appraisal with valid academic data"
+        preconditions: "HR Admin exists; no time window restriction"
+        input_action: "POST /hr/appraisal/ with valid appraisal form_data and user_info"
+        expected_result: "Appraisalform created, workflow_status=submitted, HTTP 200"
+
+    alternate_paths:
+      - scenario: "Staff retrieves previously submitted appraisals"
+        preconditions: "One Appraisalform exists for emp_test"
+        input_action: "GET /hr/appraisal/?name=emp_test"
+        expected_result: "HTTP 200 with list of appraisal records"
+
+    exception_paths:
+      - scenario: "Appraisal submission missing required receiver fields"
+        preconditions: "Employee is logged in"
+        input_action: "POST /hr/appraisal/ with empty user_info (no receiver_name, receiver_designation)"
+        expected_result: "HTTP 400 with detail about missing approver"
+
+  # ── Leave (read-only UC, skip workflow) ──────────────────────────────────────
+
+  - id: "UC-5"
+    title: "Check Leave Balance"
+    description: "Employee retrieves their leave balance to know available days per leave type"
+    actors: "Employee"
+    preconditions: "Employee logged in; LeaveBalance record exists for employee"
+
+    happy_paths:
+      - scenario: "Employee fetches their current leave balance"
+        preconditions: "LeaveBalance row exists with casual_leave_allotted=15"
+        input_action: "GET /hr/leaveBalance/ (authenticated employee)"
+        expected_result: "HTTP 200 with leave balance breakdown"
+
+    alternate_paths:
+      - scenario: "HR Admin fetches all employee leave balances"
+        preconditions: "HR Admin is logged in; at least one LeaveBalance row exists"
+        input_action: "GET /hr/leaveBalance/all/ (as hr_admin)"
+        expected_result: "HTTP 200 with list of all employee balances"
+
+    exception_paths:
+      - scenario: "Unauthenticated user tries to fetch leave balance"
+        preconditions: "No session/token"
+        input_action: "GET /hr/leaveBalance/ with no auth"
+        expected_result: "HTTP 401 or 403"

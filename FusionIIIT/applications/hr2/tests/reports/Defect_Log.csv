@@ -1,0 +1,225 @@
+Test ID,Test Name,Status,Error / Detail,Timestamp
+BR-1-I-01,test_invalid_ltc_incomplete_profile (applications.hr2.tests.test_business_rules.TestBR01_LTCProfileComplete),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:39
+BR-2-I-01,test_invalid_ltc_no_receiver (applications.hr2.tests.test_business_rules.TestBR02_LTCApproverRequired),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:40
+BR-3-I-01,test_invalid_employee_cannot_approve_ltc (applications.hr2.tests.test_business_rules.TestBR03_LTCApprovalRoleEnforced),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:41
+BR-3-V-01,test_valid_hr_admin_approves_ltc (applications.hr2.tests.test_business_rules.TestBR03_LTCApprovalRoleEnforced),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:41
+BR-4-I-01,test_invalid_rejection_without_remarks (applications.hr2.tests.test_business_rules.TestBR04_LTCRejectionRemarksRequired),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:41
+BR-4-V-01,test_valid_rejection_with_remarks (applications.hr2.tests.test_business_rules.TestBR04_LTCRejectionRemarksRequired),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:41
+BR-5-I-01,test_invalid_cpda_no_hod (applications.hr2.tests.test_business_rules.TestBR05_CPDAHODRequired),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:42
+BR-6-I-01,test_invalid_employee_cross_list (applications.hr2.tests.test_business_rules.TestBR06_CPDACrossUserListRestricted),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:43
+BR-8-I-01,test_invalid_appraisal_no_receiver (applications.hr2.tests.test_business_rules.TestBR08_AppraisalReceiverRequired),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:44
+BR-9-I-01,test_invalid_appraisal_reject_no_remarks (applications.hr2.tests.test_business_rules.TestBR09_AppraisalRejectionRemarks),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:44
+BR-9-V-01,test_valid_appraisal_reject_with_remarks (applications.hr2.tests.test_business_rules.TestBR09_AppraisalRejectionRemarks),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:44
+BR-10-I-01,test_invalid_unauthenticated_access (applications.hr2.tests.test_business_rules.TestBR10_UnauthenticatedAccessBlocked),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:45
+BR-11-I-01,test_invalid_reversed_date_range (applications.hr2.tests.test_business_rules.TestBR11_DateRangeValidation),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:46
+UC-1-EX-01,test_ex01_submit_ltc_incomplete_profile (applications.hr2.tests.test_use_cases.TestUC01_SubmitLTC),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:46
+UC-1-HP-01,test_hp01_submit_ltc_with_complete_profile (applications.hr2.tests.test_use_cases.TestUC01_SubmitLTC),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:46
+UC-2-AP-01,test_ap01_get_ltc_with_explicit_date_range (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:47
+UC-2-EX-01,test_ex01_get_ltc_invalid_date_range (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:47
+UC-2-HP-01,test_hp01_get_ltc_forms_current_year (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:47
+UC-3-AP-01,test_ap01_hr_admin_lists_employee_cpda_forms (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-3-EX-01,test_ex01_submit_cpda_no_hod (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-3-HP-01,test_hp01_submit_cpda_with_hod_configured (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-4-AP-01,test_ap01_retrieve_appraisal_history (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-4-EX-01,test_ex01_submit_appraisal_missing_receiver (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-4-HP-01,test_hp01_submit_appraisal_valid (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:48
+UC-5-AP-01,test_ap01_hr_admin_fetches_all_leave_balances (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:49
+UC-5-EX-01,test_ex01_unauthenticated_leave_balance_access (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:49
+UC-5-HP-01,test_hp01_employee_fetches_leave_balance (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:49
+WF-1-E2E-01,test_e2e_ltc_submitted_then_approved (applications.hr2.tests.test_workflows.TestWF01_LTCWorkflow),Fail,"Traceback (most recent call last):
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 60, in testPartExecutor
+    yield
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 676, in run
+    self._callTestMethod(testMethod)
+  File ""C:\Users\samhi\AppData\Local\Programs\Python\Python38\lib\unittest\case.py"", line 633, in _callTestMethod
+    method()
+  File ""C:\Users\samhi\Desktop\Ruchi-Fusion-backend\Fusion\FusionIIIT\appli",2026-04-19T17:02:50

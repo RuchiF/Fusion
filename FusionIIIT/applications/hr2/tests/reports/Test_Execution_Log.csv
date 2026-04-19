@@ -1,0 +1,44 @@
+Test ID,Test Name,Category,Status,Actual Result,Evidence,Timestamp,Tester
+BR-1-I-01,test_invalid_ltc_incomplete_profile (applications.hr2.tests.test_business_rules.TestBR01_LTCProfileComplete),Invalid,Fail,,,2026-04-19T17:02:39,Tester1
+BR-1-V-01,test_valid_ltc_with_complete_profile (applications.hr2.tests.test_business_rules.TestBR01_LTCProfileComplete),Valid,Pass,LTC accepted with complete profile,HTTP 200,2026-04-19T17:02:39,Tester1
+BR-2-I-01,test_invalid_ltc_no_receiver (applications.hr2.tests.test_business_rules.TestBR02_LTCApproverRequired),Invalid,Fail,,,2026-04-19T17:02:40,Tester1
+BR-2-V-01,test_valid_ltc_with_receiver (applications.hr2.tests.test_business_rules.TestBR02_LTCApproverRequired),Valid,Pass,LTC accepted with valid receiver,,2026-04-19T17:02:40,Tester1
+BR-3-I-01,test_invalid_employee_cannot_approve_ltc (applications.hr2.tests.test_business_rules.TestBR03_LTCApprovalRoleEnforced),Invalid,Fail,,,2026-04-19T17:02:41,Tester1
+BR-3-V-01,test_valid_hr_admin_approves_ltc (applications.hr2.tests.test_business_rules.TestBR03_LTCApprovalRoleEnforced),Valid,Fail,,,2026-04-19T17:02:41,Tester1
+BR-4-I-01,test_invalid_rejection_without_remarks (applications.hr2.tests.test_business_rules.TestBR04_LTCRejectionRemarksRequired),Invalid,Fail,,,2026-04-19T17:02:41,Tester1
+BR-4-V-01,test_valid_rejection_with_remarks (applications.hr2.tests.test_business_rules.TestBR04_LTCRejectionRemarksRequired),Valid,Fail,,,2026-04-19T17:02:41,Tester1
+BR-5-I-01,test_invalid_cpda_no_hod (applications.hr2.tests.test_business_rules.TestBR05_CPDAHODRequired),Invalid,Fail,,,2026-04-19T17:02:42,Tester1
+BR-5-V-01,test_valid_cpda_with_hod (applications.hr2.tests.test_business_rules.TestBR05_CPDAHODRequired),Valid,Pass,CPDA accepted with HOD,,2026-04-19T17:02:42,Tester1
+BR-6-I-01,test_invalid_employee_cross_list (applications.hr2.tests.test_business_rules.TestBR06_CPDACrossUserListRestricted),Invalid,Fail,,,2026-04-19T17:02:43,Tester1
+BR-6-V-01,test_valid_hr_admin_cross_list (applications.hr2.tests.test_business_rules.TestBR06_CPDACrossUserListRestricted),Valid,Pass,HR Admin cross-list allowed,,2026-04-19T17:02:43,Tester1
+BR-7-I-01,test_invalid_director_reject_no_remarks (applications.hr2.tests.test_business_rules.TestBR07_CPDADirectorRejectionRemarks),Invalid,Pass,Empty remarks would trigger 400 per view logic,,2026-04-19T17:02:43,Tester1
+BR-7-V-01,test_valid_director_reject_with_remarks (applications.hr2.tests.test_business_rules.TestBR07_CPDADirectorRejectionRemarks),Valid,Pass,Director rejection with remarks accepted,,2026-04-19T17:02:43,Tester1
+BR-8-I-01,test_invalid_appraisal_no_receiver (applications.hr2.tests.test_business_rules.TestBR08_AppraisalReceiverRequired),Invalid,Fail,,,2026-04-19T17:02:44,Tester1
+BR-8-V-01,test_valid_appraisal_with_receiver (applications.hr2.tests.test_business_rules.TestBR08_AppraisalReceiverRequired),Valid,Pass,Appraisal accepted with receiver,,2026-04-19T17:02:44,Tester1
+BR-9-I-01,test_invalid_appraisal_reject_no_remarks (applications.hr2.tests.test_business_rules.TestBR09_AppraisalRejectionRemarks),Invalid,Fail,,,2026-04-19T17:02:44,Tester1
+BR-9-V-01,test_valid_appraisal_reject_with_remarks (applications.hr2.tests.test_business_rules.TestBR09_AppraisalRejectionRemarks),Valid,Fail,,,2026-04-19T17:02:44,Tester1
+BR-10-I-01,test_invalid_unauthenticated_access (applications.hr2.tests.test_business_rules.TestBR10_UnauthenticatedAccessBlocked),Invalid,Fail,,,2026-04-19T17:02:45,Tester1
+BR-10-V-01,test_valid_authenticated_access (applications.hr2.tests.test_business_rules.TestBR10_UnauthenticatedAccessBlocked),Valid,Pass,Authenticated access allowed,HTTP 200,2026-04-19T17:02:45,Tester1
+BR-11-I-01,test_invalid_reversed_date_range (applications.hr2.tests.test_business_rules.TestBR11_DateRangeValidation),Invalid,Fail,,,2026-04-19T17:02:46,Tester1
+BR-11-V-01,test_valid_date_range (applications.hr2.tests.test_business_rules.TestBR11_DateRangeValidation),Valid,Pass,Valid date range accepted,,2026-04-19T17:02:46,Tester1
+UC-1-AP-01,test_ap01_submit_ltc_dict_format (applications.hr2.tests.test_use_cases.TestUC01_SubmitLTC),Alternate Path,Pass,LTC accepted in dict format,HTTP 200,2026-04-19T17:02:46,Tester1
+UC-1-EX-01,test_ex01_submit_ltc_incomplete_profile (applications.hr2.tests.test_use_cases.TestUC01_SubmitLTC),Exception,Fail,,,2026-04-19T17:02:46,Tester1
+UC-1-HP-01,test_hp01_submit_ltc_with_complete_profile (applications.hr2.tests.test_use_cases.TestUC01_SubmitLTC),Happy Path,Fail,,,2026-04-19T17:02:46,Tester1
+UC-2-AP-01,test_ap01_get_ltc_with_explicit_date_range (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Alternate Path,Fail,,,2026-04-19T17:02:47,Tester1
+UC-2-EX-01,test_ex01_get_ltc_invalid_date_range (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Exception,Fail,,,2026-04-19T17:02:47,Tester1
+UC-2-HP-01,test_hp01_get_ltc_forms_current_year (applications.hr2.tests.test_use_cases.TestUC02_RetrieveLTCHistory),Happy Path,Fail,,,2026-04-19T17:02:47,Tester1
+UC-3-AP-01,test_ap01_hr_admin_lists_employee_cpda_forms (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Alternate Path,Fail,,,2026-04-19T17:02:48,Tester1
+UC-3-EX-01,test_ex01_submit_cpda_no_hod (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Exception,Fail,,,2026-04-19T17:02:48,Tester1
+UC-3-HP-01,test_hp01_submit_cpda_with_hod_configured (applications.hr2.tests.test_use_cases.TestUC03_SubmitCPDAAdvance),Happy Path,Fail,,,2026-04-19T17:02:48,Tester1
+UC-4-AP-01,test_ap01_retrieve_appraisal_history (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Alternate Path,Fail,,,2026-04-19T17:02:48,Tester1
+UC-4-EX-01,test_ex01_submit_appraisal_missing_receiver (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Exception,Fail,,,2026-04-19T17:02:48,Tester1
+UC-4-HP-01,test_hp01_submit_appraisal_valid (applications.hr2.tests.test_use_cases.TestUC04_SubmitAppraisal),Happy Path,Fail,,,2026-04-19T17:02:48,Tester1
+UC-5-AP-01,test_ap01_hr_admin_fetches_all_leave_balances (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Alternate Path,Fail,,,2026-04-19T17:02:49,Tester1
+UC-5-EX-01,test_ex01_unauthenticated_leave_balance_access (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Exception,Fail,,,2026-04-19T17:02:49,Tester1
+UC-5-HP-01,test_hp01_employee_fetches_leave_balance (applications.hr2.tests.test_use_cases.TestUC05_CheckLeaveBalance),Happy Path,Fail,,,2026-04-19T17:02:49,Tester1
+WF-1-E2E-01,test_e2e_ltc_submitted_then_approved (applications.hr2.tests.test_workflows.TestWF01_LTCWorkflow),End-to-End,Fail,Workflow step failed,"Steps: [{'step': 1, 'action': 'Employee submits LTC', 'expected': 'HTTP 200, workflow_status=submitted', 'actual': 'HTTP 200', 'passed': True}, {'step': 2, 'action': 'Verify DB: LTCform.workflow_status', 'expected': 'submitted', 'actual': 'None', 'passed': False}]",2026-04-19T17:02:50,Tester1
+WF-1-NEG-01,test_negative_ltc_hr_admin_rejects (applications.hr2.tests.test_workflows.TestWF01_LTCWorkflow),Negative,Pass,LTC correctly rejected,"workflow_status=hr_rejected, approved=False",2026-04-19T17:02:50,Tester1
+WF-2-E2E-01,test_e2e_cpda_full_approval_chain (applications.hr2.tests.test_workflows.TestWF02_CPDAAdvanceWorkflow),End-to-End,Pass,Full CPDA chain completed,Final: accountant_processed,2026-04-19T17:02:50,Tester1
+WF-2-NEG-01,test_negative_hod_rejects_cpda (applications.hr2.tests.test_workflows.TestWF02_CPDAAdvanceWorkflow),Negative,Pass,CPDA correctly terminated at hod_not_verified,workflow_status=hod_not_verified,2026-04-19T17:02:50,Tester1
+WF-3-E2E-01,test_e2e_appraisal_approved (applications.hr2.tests.test_workflows.TestWF03_AppraisalWorkflow),End-to-End,Pass,Appraisal workflow E2E passed,"workflow_status=hr_approved, approved=True",2026-04-19T17:02:51,Tester1
+WF-3-NEG-01,test_negative_appraisal_rejected (applications.hr2.tests.test_workflows.TestWF03_AppraisalWorkflow),Negative,Pass,Appraisal correctly rejected,workflow_status=hr_rejected,2026-04-19T17:02:51,Tester1
